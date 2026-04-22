@@ -1,4 +1,4 @@
-import {
+﻿import {
   HeadContent,
   Link,
   Scripts,
@@ -97,13 +97,13 @@ function RootNotFound() {
   return (
     <main className="page-wrap py-16 text-center text-[#DEE8D9]">
       <h1 className="text-3xl font-semibold sm:text-4xl">
-        Pagina nao encontrada
+        Página não encontrada
       </h1>
       <p className="mt-3 text-sm text-[#96BD9E] sm:text-base">
-        A rota que voce tentou acessar nao existe.
+        A rota que você tentou acessar não existe.
       </p>
       <Link className="mt-6 inline-block underline underline-offset-4" to="/">
-        Voltar para a pagina inicial
+        Voltar para a página inicial
       </Link>
     </main>
   )

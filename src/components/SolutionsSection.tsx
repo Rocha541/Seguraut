@@ -41,17 +41,17 @@ function SolutionCard({
 
 export default function SolutionsSection({ id = 'solucoes' }: SolutionsSectionProps) {
   return (
-    <section id={id} className="scroll-mt-28 h-screen bg-[#50af47] px-4 py-6 md:px-8 md:py-9 xl:px-10">
+    <section id={id} className="scroll-mt-28 h-screen bg-[#47AD4C] px-4 py-6 md:px-8 md:py-9 xl:px-10">
       <div className="mx-auto flex w-full max-w-[1520px] flex-col gap-4 md:gap-6">
         <div className="grid min-h-[360px] grid-cols-1 gap-4 md:min-h-[340px] md:gap-6 xl:grid-cols-[1.02fr_1.14fr]">
           <SolutionCard
             title="Portaria Remota 24h"
-            description="Controle de acesso em tempo real com equipe especializada, reducao de custos e mais seguranca para moradores."
+            description="Controle de acesso em tempo real, com equipe especializada, redução de custos e mais segurança para moradores."
             tone="light"
           />
           <SolutionCard
             title="Controle de Acesso Inteligente"
-            description="Cadastro de moradores, visitantes e prestadores com biometria, tags, QR Code e reconhecimento de placas."
+            description="Cadastro de moradores, visitantes e prestadores, com biometria, tags, QR Code e reconhecimento de placas."
             tone="dark"
           />
         </div>
@@ -59,17 +59,17 @@ export default function SolutionsSection({ id = 'solucoes' }: SolutionsSectionPr
         <div className="grid min-h-[460px] grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:min-h-[430px] xl:grid-cols-[0.92fr_1.04fr_0.98fr]">
           <SolutionCard
             title="Alarmes Perimetrais"
-            description="Sensores de barreira, cercas eletricas e deteccao de invasao para prevencao em areas externas do condominio."
+            description="Sensores de barreira, cercas elétricas e detecção de invasão para prevenção em áreas externas do condomínio."
             tone="dark"
           />
           <SolutionCard
             title="CFTV com Monitoramento"
-            description="Instalacao de cameras em pontos estrategicos, gravacao em nuvem e acompanhamento continuo da central."
+            description="Instalação de câmeras em pontos estratégicos, gravação em nuvem e acompanhamento contínuo da central."
             tone="light"
           />
           <SolutionCard
-            title="Interfonia e Comunicacao Integrada"
-            description="Sistemas modernos de interfone com integracao ao celular, facilitando a gestao de acessos e chamadas."
+            title="Interfonia e Comunicação Integrada"
+            description="Sistemas modernos de interfone, com integração ao celular, facilitando a gestão de acessos e chamadas."
             tone="dark"
             className="md:col-span-2 xl:col-span-1"
           />
@@ -78,4 +78,3 @@ export default function SolutionsSection({ id = 'solucoes' }: SolutionsSectionPr
     </section>
   )
 }
-

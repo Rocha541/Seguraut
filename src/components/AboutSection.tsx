@@ -1,4 +1,4 @@
-import { Button } from './ui/button'
+﻿import { Button } from './ui/button'
 
 type AboutSectionProps = {
   id?: string
@@ -8,7 +8,7 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
   return (
     <section
       id={id}
-      className="scroll-mt-28 flex min-h-[100svh] items-center bg-[#d3fad2] px-4 py-6 md:py-8"
+      className="scroll-mt-28 flex min-h-[100svh] items-center bg-[#47AD4C] px-4 py-6 md:py-8"
     >
       <div className="relative mx-auto w-full max-w-[1720px]">
         <DecorativeAsterisk className="-left-6 top-8 opacity-45 sm:-left-4 md:top-16 lg:top-30 xl:-left-10" />
@@ -19,13 +19,14 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
         </h2>
 
         <p className="mx-auto mt-3 max-w-[1060px] text-center text-base leading-relaxed font-normal tracking-[-0.02em] text-[#172521] md:text-xl lg:text-2xl">
-          Protegemos condomínios residenciais com soluções integradas de câmeras, controle de
-          acesso e portaria remota, com operação contínua e suporte técnico especializado.
+          Protegemos condomínios residenciais com soluções integradas de câmeras,
+          controle de acesso e portaria remota, com operação contínua e suporte
+          técnico especializado.
         </p>
 
         <div className="relative mx-auto mt-4 max-w-[1640px] overflow-hidden rounded-[20px] shadow-[0_18px_45px_rgba(6,14,9,0.2)] md:mt-5">
           <img
-            src="/figma/quem-somos-hero.png"
+            src="/figma/frente-condo.webp"
             alt="Vista aérea de condomínio com áreas comuns e controle de acesso"
             className="h-[190px] w-full object-cover sm:h-[220px] md:h-[260px] lg:h-[300px] xl:h-[550px]"
             loading="lazy"
@@ -34,9 +35,8 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
 
         <div className="-mt-5 relative z-30 flex justify-center md:-mt-6">
           <Button
-        
             size="lg"
-            className="h-[57px] rounded-2xl  px-[30px] text-xl font-normal text-[#dee8d9] hover:bg-[#f5f5f5] hover:text-primary"
+            className="h-[57px] rounded-2xl px-[30px] text-xl font-normal text-[#dee8d9] hover:bg-[#f5f5f5] hover:text-primary"
           >
             Falar com a Seguraut
           </Button>
