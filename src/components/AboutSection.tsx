@@ -11,8 +11,7 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
       className="scroll-mt-28 flex min-h-[100svh] items-center bg-[#47AD4C] px-4 py-6 md:py-8"
     >
       <div className="relative mx-auto w-full max-w-[1720px]">
-        <DecorativeAsterisk className="-left-6 top-8 opacity-45 sm:-left-4 md:top-16 lg:top-30 xl:-left-10" />
-        <DecorativeAsterisk className="-right-6 top-8 scale-x-[-1] opacity-45 sm:-right-4 md:top-16 lg:top-30 xl:-right-10" />
+       
 
         <h2 className="mx-auto max-w-[1080px] text-center text-3xl leading-tight font-bold tracking-[-0.03em] text-[#060e09] md:text-5xl lg:text-6xl">
           Segurança eletrônica feita para condomínios

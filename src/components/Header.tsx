@@ -3,7 +3,7 @@
 export default function Header() {
   return (
     <header className="sticky top-3 z-50 pt-4 sm:top-4 sm:pt-4">
-      <div className="page-wrap rounded-2xl  bg-[#47AD4C] backdrop-blur-lg">
+      <div className="page-wrap rounded-2xl  bg-[#51c057] backdrop-blur-lg">
         <nav className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-4 sm:py-4 lg:px-8">
           <div>
             <img

@@ -41,7 +41,7 @@ function SolutionCard({
 
 export default function SolutionsSection({ id = 'solucoes' }: SolutionsSectionProps) {
   return (
-    <section id={id} className="scroll-mt-28 h-screen bg-[#47AD4C] px-4 py-6 md:px-8 md:py-9 xl:px-10">
+    <section id={id} className="scroll-mt-28 min-h-full bg-[#47AD4C] px-4 py-6 md:px-8 md:py-9 xl:px-10">
       <div className="mx-auto flex w-full max-w-[1520px] flex-col gap-4 md:gap-6">
         <div className="grid min-h-[360px] grid-cols-1 gap-4 md:min-h-[340px] md:gap-6 xl:grid-cols-[1.02fr_1.14fr]">
           <SolutionCard
