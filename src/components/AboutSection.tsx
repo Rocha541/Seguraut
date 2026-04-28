@@ -6,7 +6,7 @@ type AboutSectionProps = {
 
 export default function AboutSection({ id = 'about' }: AboutSectionProps) {
   return (
-    <section id={id} className="scroll-mt-28 w-full bg-[#ccfccb]">
+    <section id={id} className="scroll-mt-28 w-full bg-[#F3F6F2]">
       <div className="grid min-h-[100svh] grid-cols-1 lg:grid-cols-2">
         <div className="flex items-center">
           <div className="w-full px-6 py-12 sm:px-10 md:px-14 md:py-16 lg:px-16 lg:py-20">
