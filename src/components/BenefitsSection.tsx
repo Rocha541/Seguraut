@@ -77,11 +77,11 @@ function BenefitsSection({
           </div>
         </div>
 
-        <div className="grid rounded-sm border border-[#0d1a11]/14 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid overflow-hidden rounded-sm border border-[#0d1a11]/14 md:grid-cols-2 xl:grid-cols-3">
           {benefits.map((benefit, index) => (
             <article
               key={`${benefit.title}-${index}`}
-              className="min-h-[260px] rounded-sm border-[#0d1a11]/14 bg-[#f3f6f2] p-7 md:border-r md:p-8 xl:[&:nth-child(3n)]:border-r-0 [&:not(:nth-last-child(-n+1))]:border-b md:[&:not(:nth-last-child(-n+2))]:border-b xl:[&:not(:nth-last-child(-n+3))]:border-b"
+              className="min-h-[260px] border-[#0d1a11]/14 bg-[#f3f6f2] p-7 md:border-r md:p-8 xl:[&:nth-child(3n)]:border-r-0 [&:not(:nth-last-child(-n+1))]:border-b md:[&:not(:nth-last-child(-n+2))]:border-b xl:[&:not(:nth-last-child(-n+3))]:border-b"
             >
               <div className="mb-8 flex h-11 w-11 items-center justify-center border border-[#0d1a11]/16 text-[#102719] [&_svg]:h-5 [&_svg]:w-5 [&_svg]:stroke-[1.4]">
                 {benefit.icon}

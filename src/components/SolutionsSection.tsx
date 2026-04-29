@@ -65,7 +65,7 @@ function SolutionCard({
 
   return (
     <article
-      className={`group relative flex min-h-[300px] flex-col justify-between rounded-sm border p-6 transition-colors duration-300 md:p-8 ${
+      className={`group relative flex min-h-[300px] flex-col justify-between border p-6 transition-colors duration-300 md:p-8 ${
         isInk
           ? 'bg-[#060e09] text-[#edf8e9]'
           : 'bg-[#51c057] text-primary-foreground'
@@ -125,7 +125,7 @@ export default function SolutionsSection({
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 gap-0 rounded-sm md:grid-cols-2 xl:grid-cols-6">
+        <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-sm md:grid-cols-2 xl:grid-cols-6">
           {solutions.map((solution, index) => (
             <SolutionCard
               key={solution.title}
