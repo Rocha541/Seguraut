@@ -19,11 +19,7 @@ function App() {
           >
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat   "
-              style={{
-                // backgroundImage: "url('/figma/vista-de-cima-condo.webp')",
-                backgroundImage: "url('/figma/seguraut-fundo.webp')",
-              }}
+              className="absolute inset-0 bg-[url('/figma/condocamera.png')] bg-cover bg-center bg-no-repeat"
             />
 
             
@@ -33,11 +29,7 @@ function App() {
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 z-[2]"
-              style={{
-                background:
-                  'linear-gradient(96deg, rgba(7,12,9,0.86) 0%, rgba(7,12,9,0.68) 30%, rgba(7,12,9,0.38) 48%, rgba(7,12,9,0.06) 72%, rgba(7,12,9,0) 100%)',
-              }}
+              className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(96deg,rgba(7,12,9,0.86)_0%,rgba(7,12,9,0.68)_30%,rgba(7,12,9,0.38)_48%,rgba(7,12,9,0.06)_72%,rgba(7,12,9,0)_100%)]"
             />
 
             <div className="relative z-20">
@@ -84,27 +76,11 @@ function App() {
             >
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-0"
-                style={{
-                  backdropFilter: 'blur(26.4px)',
-                  WebkitBackdropFilter: 'blur(26.4px)',
-                  maskImage:
-                    'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 28%, rgba(0,0,0,0.55) 52%, rgba(0,0,0,0.82) 78%, rgba(0,0,0,1) 100%)',
-                  WebkitMaskImage:
-                    'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 28%, rgba(0,0,0,0.55) 52%, rgba(0,0,0,0.82) 78%, rgba(0,0,0,1) 100%)',
-                }}
+                className="pointer-events-none absolute top-0 right-0 left-0 z-20 h-px bg-[linear-gradient(to_right,rgba(211,250,210,0)_0%,rgba(211,250,210,0.5)_20%,rgba(211,250,210,0.8)_50%,rgba(211,250,210,0.5)_80%,rgba(211,250,210,0)_100%)]"
               />
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute top-0 right-0 left-0 z-[1] h-px"
-                style={{
-                  background:
-                    'linear-gradient(to right, rgba(211,250,210,0) 0%, rgba(211,250,210,0.45) 16%, rgba(211,250,210,0.7) 50%, rgba(211,250,210,0.45) 84%, rgba(211,250,210,0) 100%)',
-                }}
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/10 via-black/16 to-black/24"
+                className="pointer-events-none absolute inset-0 z-0 backdrop-blur-sm"
               />
               <div className="page-wrap relative z-10 grid grid-cols-1 gap-6 py-6 text-background sm:grid-cols-2 lg:grid-cols-3 lg:gap-0 lg:py-8">
                 <div>

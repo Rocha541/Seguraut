@@ -7,6 +7,9 @@
 :root {
   --sea-ink: #060e09;
   --sea-ink-soft: #172521;
+  --brand-green: #51c057;
+  --paper: #f3f6f2;
+  --paper-green: #edf8e9;
   --lagoon: #314b3b;
   --lagoon-deep: #243a2d;
   --palm: #314b3b;
@@ -17,7 +20,7 @@
   --line: rgba(6, 14, 9, 0.14);
   --inset-glint: rgba(255, 255, 255, 0.82);
   --kicker: rgba(6, 14, 9, 0.88);
-  --bg-base: #ffffff;
+  --bg-base: #f3f6f2;
   --header-bg: #d3fad2;
   --chip-bg: rgba(255, 255, 255, 0.8);
   --chip-line: rgba(49, 75, 59, 0.2);
@@ -25,7 +28,7 @@
   --hero-a: rgba(49, 75, 59, 0.22);
   --hero-b: rgba(6, 14, 9, 0.14);
 
-  --background: #f6faf7;
+  --background: #f3f6f2;
   --foreground: #060e09;
   --card: #dee8d9;
   --card-foreground: #060e09;
@@ -151,7 +154,7 @@ pre code {
 }
 
 .page-wrap {
-  width: min(1920px, 100%);
+  width: 100%;
   padding-inline: clamp(1rem, 5vw, 6.25rem);
   margin-inline: auto;
 }
@@ -231,3 +234,4 @@ a {
   }
   
 }
+
