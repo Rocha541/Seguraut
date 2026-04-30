@@ -6,7 +6,7 @@ type SolutionsSectionProps = {
   id?: string
 }
 
-type SolutionTone = 'paper' | 'ink'
+type SolutionTone = 'paper' | 'mint'
 
 type SolutionCardProps = {
   title: string
@@ -29,7 +29,7 @@ const solutions: Array<Omit<SolutionCardProps, 'className'>> = [
     description:
       'Cadastro de moradores, visitantes e prestadores, com biometria, tags, QR Code e reconhecimento de placas.',
     icon: <ScanFace />,
-    tone: 'ink',
+    tone: 'mint',
   },
   {
     title: 'Alarmes Perimetrais',
@@ -50,7 +50,7 @@ const solutions: Array<Omit<SolutionCardProps, 'className'>> = [
     description:
       'Sistemas modernos de interfone, com integracao ao celular, facilitando a gestao de acessos e chamadas.',
     icon: <DoorOpen />,
-    tone: 'ink',
+    tone: 'mint',
   },
 ]
 
@@ -61,22 +61,19 @@ function SolutionCard({
   tone = 'paper',
   className = '',
 }: SolutionCardProps) {
-  const isInk = tone === 'ink'
+  const isMint = tone === 'mint'
 
   return (
     <article
-      className={`group relative flex min-h-[300px] flex-col justify-between border p-6 transition-colors duration-300 md:p-8 ${
-        isInk
-          ? 'bg-[#060e09] text-[#edf8e9]'
-          : 'bg-[#51c057] text-primary-foreground'
-      } ${isInk ? 'border-[#d3fad2]/15' : 'border-[#0d1a11]/15'} ${className}`}
+      className={`group relative flex min-h-[300px] flex-col justify-between border p-6 transition-colors duration-300 md:p-8 border-[#51c057]/30 bg-[#f9fcf8] text-[#060e09]'
+          
+      } ${className}`}
     >
       <div>
         <div
-          className={`mb-7 flex h-12 w-12 items-center justify-center border ${
-            isInk
-              ? 'border-[#51c057] text-primary bg-[#51c057]/95 '
-              : 'border-primary text-[#76f97d] bg-primary/95'
+          className={`mb-7 flex h-12 w-12 items-center justify-center border 
+               border-[#51c057]/35 bg-[#9bf9797b] text-[#060e09]
+              
           } [&_svg]:h-6 [&_svg]:w-6 [&_svg]:stroke-[1.4]`}
         >
           {icon}
@@ -87,7 +84,7 @@ function SolutionCard({
       </div>
       <p
         className={`mt-8 max-w-[46ch] text-base leading-relaxed ${
-          isInk ? 'text-[#edf8e9]/74' : 'text-[#edf8e9]/74'
+          isMint ? 'text-[#243a2d]/76' : 'text-[#243a2d]/72'
         }`}
       >
         {description}
@@ -102,9 +99,15 @@ export default function SolutionsSection({
   return (
     <section
       id={id}
-      className="scroll-mt-28 border-b border-[#0d1a11]/14 bg-[#F3F6F2] py-12 md:py-16"
+      className="relative isolate scroll-mt-28 overflow-hidden border-b border-[#0d1a11]/14 bg-[#F3F6F2] py-12 md:py-16"
     >
-      <div className="page-wrap">
+      <img
+        src="/figma/logo-tracado.svg"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 right-10 -z-10 h-[460px] w-auto translate-x-[36%] -translate-y-[4%] opacity-45 md:h-[640px] md:translate-x-[30%] lg:h-[820px] lg:translate-x-[24%]"
+      />
+      <div className="page-wrap relative z-10">
         <div className="mb-8 grid gap-6 md:mb-10 md:grid-cols-[0.9fr_1.1fr] md:items-end">
           <div className="flex flex-col  gap-7 w-full">
             <h2 className="mt-5 max-w-3xl text-4xl leading-tight font-bold text-primary md:text-5xl">
@@ -125,7 +128,7 @@ export default function SolutionsSection({
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-sm md:grid-cols-2 xl:grid-cols-6">
+        <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-sm border border-[#0d1a11]/12 md:grid-cols-2 xl:grid-cols-6">
           {solutions.map((solution, index) => (
             <SolutionCard
               key={solution.title}
