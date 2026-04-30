@@ -1,5 +1,6 @@
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type ScrollRevealProps = {
   children: ReactNode
