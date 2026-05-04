@@ -3,6 +3,7 @@ import BenefitsSection from '#/components/BenefitsSection'
 import DifferentialsSection from '#/components/DifferentialsSection'
 import Header from '#/components/Header'
 import SolutionsSection from '#/components/SolutionsSection'
+import TestimonialSection from '#/components/TestimonialSection'
 import { Button } from '#/components/ui/button'
 import { createFileRoute } from '@tanstack/react-router'
 
@@ -104,6 +105,7 @@ function App() {
           </div>
 
           <SolutionsSection id="solucoes" />
+          <TestimonialSection />
           <DifferentialsSection id="diferenciais" />
 
           <BenefitsSection />
