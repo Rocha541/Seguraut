@@ -300,35 +300,35 @@ function CardIllustration({ type }: { type: DifferentialIllustration }) {
 
 const differentials: DifferentialItem[] = [
   {
-    label: 'Diagnostico',
+    label: 'Diagnóstico',
     title: 'Projeto sob medida',
-    emphasis: 'sem pacote generico',
+    emphasis: 'sem pacote genérico',
     description:
-      'Levantamento tecnico por perfil do condominio para dimensionar tecnologia, cobertura e operacao na medida certa.',
+      'Levantamento técnico conforme o perfil do condomínio para dimensionar tecnologia, cobertura e operação na medida certa.',
     illustration: 'custom-plan',
   },
   {
     label: '24h',
-    title: 'Suporte continuo',
+    title: 'Suporte contínuo',
     emphasis: '24 horas por dia',
     description:
-      'Central disponivel todos os dias, com monitoramento ativo e acao rapida em ocorrencias.',
+      'Central disponível todos os dias, com monitoramento ativo e ação rápida em ocorrências.',
     illustration: 'always-on-support',
   },
   {
-    label: 'Time tecnico',
-    title: 'Equipe propria',
+    label: 'Time técnico',
+    title: 'Equipe própria',
     emphasis: 'especialistas dedicados',
     description:
-      'Operacao e implantacao com profissionais da Seguraut, garantindo padrao e qualidade em cada etapa.',
+      'Operação e implantação com profissionais da Seguraut, garantindo padrão e qualidade em cada etapa.',
     illustration: 'in-house-team',
   },
   {
-    label: 'Prevencao',
-    title: 'Manutencao preventiva',
+    label: 'Prevenção',
+    title: 'Manutenção preventiva',
     emphasis: 'rotina programada',
     description:
-      'Rotina periodica de verificacao e ajustes para evitar interrupcoes e aumentar a vida util da operacao.',
+      'Rotina periódica de verificação e ajustes para evitar interrupções e aumentar a vida útil da operação.',
     illustration: 'preventive-maintenance',
   },
 ]
@@ -339,18 +339,27 @@ export default function DifferentialsSection({
   return (
     <section
       id={id}
-      className="scroll-mt-28 bg-[linear-gradient(180deg,#edf8e9_0%,#f3f6f2_34%,#f3f6f2_100%)] py-12 md:py-16"
+      className="scroll-mt-28 bg-[#f3f6f2] py-12 md:py-16"
     >
       <div className="page-wrap">
         <div className="mb-10">
           <div className="mb-6 h-1 w-14 bg-[#51c057]" />
           <h2 className="max-w-5xl text-4xl leading-tight font-bold text-[#060e09] md:text-5xl">
-            Seguranca eletronica com operacao simples e controle real
+            Segurança eletrônica com operação simples e controle real
           </h2>
           <p className="mt-6 max-w-4xl text-base leading-relaxed text-[#243a2d]/78 md:text-lg">
-            Estrutura tecnica, suporte e manutencao integrados em uma operacao
-            confiavel para sindicos, moradores e administradoras.
+            Estrutura técnica, suporte e manutenção integrados em uma operação
+            confiável para síndicos, moradores e administradoras.
           </p>
+        </div>
+
+        <div className="mb-8">
+          <Button
+            className="w-full bg-[#51c057] text-[#102719] hover:bg-[#060e09] hover:text-[#edf8e9] sm:w-auto"
+            size="lg"
+          >
+            Falar com especialista
+          </Button>
         </div>
 
         <div className="grid overflow-hidden rounded-sm border border-[#0d1a11]/14 shadow-[0_24px_70px_rgba(6,14,9,0.08)] xl:grid-cols-2">
@@ -382,15 +391,6 @@ export default function DifferentialsSection({
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-8">
-          <Button
-            className="w-full bg-[#51c057] text-[#102719] hover:bg-[#060e09] hover:text-[#edf8e9] sm:w-auto"
-            size="lg"
-          >
-            Falar com especialista
-          </Button>
         </div>
       </div>
     </section>
