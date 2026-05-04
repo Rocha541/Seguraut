@@ -24,7 +24,6 @@ function App() {
               className="absolute inset-0 bg-[url('/figma/condocamera.png')] bg-cover bg-center bg-no-repeat"
             />
 
-            
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 z-[1] bg-[#0000004a]"
@@ -47,7 +46,10 @@ function App() {
 
                   <p className="mt-4 text-base font-light text-[#e8f2e4] sm:text-lg xl:mt-8 xl:max-w-6/10 xl:text-xl">
                     Monitoramento, controle de acesso e segurança eletrônica
-                    para <span className="font-semibold">reduzir riscos sem complicar a gestão.</span>
+                    para{' '}
+                    <span className="font-semibold">
+                      reduzir riscos sem complicar a gestão.
+                    </span>
                   </p>
 
                   <div
@@ -87,7 +89,7 @@ function App() {
               <div className="page-wrap relative z-10 grid grid-cols-1 gap-6 py-6 text-background sm:grid-cols-2 lg:grid-cols-3 lg:gap-0 lg:py-8">
                 <div>
                   <span className="text-4xl font-semibold">+10</span>
-                  <p className="text-xl sm:text-2xl">Condominios atendidos</p>
+                  <p className="text-xl sm:text-2xl">Condomínios atendidos</p>
                 </div>
                 <div>
                   <span className="text-4xl font-semibold">+500</span>
@@ -95,7 +97,7 @@ function App() {
                 </div>
                 <div>
                   <span className="text-4xl font-semibold">24h</span>
-                  <p className="text-xl sm:text-2xl">De segurança inteligente</p>
+                  <p className="text-xl sm:text-2xl">Segurança inteligente</p>
                 </div>
               </div>
             </div>
@@ -105,9 +107,9 @@ function App() {
             <AboutSection id="about" />
           </div>
 
-          <MethodologySection />
           <SolutionsSection id="solucoes" />
           <TestimonialSection />
+          <MethodologySection />
           <DifferentialsSection id="diferenciais" />
 
           <BenefitsSection />
