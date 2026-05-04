@@ -20,35 +20,35 @@ const solutions: Array<Omit<SolutionCardProps, 'className'>> = [
   {
     title: 'Portaria Remota 24h',
     description:
-      'Controle de acesso em tempo real, com equipe especializada, reducao de custos e mais seguranca para moradores.',
+      'Controle de acesso em tempo real, com equipe especializada, redução de custos e mais segurança para moradores.',
     icon: <Headphones />,
     tone: 'paper',
   },
   {
     title: 'Controle de Acesso Inteligente',
     description:
-      'Cadastro de moradores, visitantes e prestadores, com biometria, tags, QR Code e reconhecimento de placas.',
+      'Cadastro de moradores, visitantes e prestadores de serviço, com biometria, tags, QR Code e reconhecimento de placas.',
     icon: <ScanFace />,
     tone: 'mint',
   },
   {
     title: 'Alarmes Perimetrais',
     description:
-      'Sensores de barreira, cercas eletricas e deteccao de invasao para prevencao em areas externas do condominio.',
+      'Sensores de barreira, cercas elétricas e detecção de invasão para prevenção em áreas externas do condomínio.',
     icon: <BellRing />,
     tone: 'paper',
   },
   {
     title: 'CFTV com Monitoramento',
     description:
-      'Instalacao de cameras em pontos estrategicos, gravacao em nuvem e acompanhamento continuo da central.',
+      'Instalação de câmeras em pontos estratégicos, gravação em nuvem e acompanhamento contínuo da central.',
     icon: <Camera />,
     tone: 'paper',
   },
   {
-    title: 'Interfonia e Comunicacao Integrada',
+    title: 'Interfonia e Comunicação Integrada',
     description:
-      'Sistemas modernos de interfone, com integracao ao celular, facilitando a gestao de acessos e chamadas.',
+      'Sistemas modernos de interfone, com integração ao celular, facilitando a gestão de acessos e chamadas.',
     icon: <DoorOpen />,
     tone: 'mint',
   },
@@ -65,16 +65,12 @@ function SolutionCard({
 
   return (
     <article
-      className={`group relative flex min-h-[300px] flex-col justify-between border p-6 transition-colors duration-300 md:p-8 border-[#51c057]/30 bg-[#f9fcf8] text-[#060e09]'
-          
-      } ${className}`}
+      className={`group relative flex min-h-[300px] flex-col justify-between border border-[#51c057]/30 bg-[#f9fcf8] p-6 text-[#060e09] transition-colors duration-300 md:p-8
+      ${className}`}
     >
       <div>
         <div
-          className={`mb-7 flex h-12 w-12 items-center justify-center border 
-               border-[#51c057]/35 bg-[#9bf9797b] text-[#060e09]
-              
-          } [&_svg]:h-6 [&_svg]:w-6 [&_svg]:stroke-[1.4]`}
+          className="mb-7 flex h-12 w-12 items-center justify-center border border-[#51c057]/35 bg-[#edf8e9] text-[#060e09] [&_svg]:h-6 [&_svg]:w-6 [&_svg]:stroke-[1.4]"
         >
           {icon}
         </div>
@@ -121,7 +117,7 @@ export default function SolutionsSection({
         </div>
         <div className="mb-8 md:mb-10">
           <Button
-            className="w-full bg-[#51c057] text-[#102719] hover:bg-[#edf8e9] hover:text-[#071402] sm:w-auto"
+            className="w-full bg-[#51c057] text-[#102719] hover:bg-primary hover:text-background sm:w-auto"
             size="lg"
           >
             Falar com especialista
