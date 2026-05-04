@@ -2,6 +2,7 @@
 import BenefitsSection from '#/components/BenefitsSection'
 import DifferentialsSection from '#/components/DifferentialsSection'
 import Header from '#/components/Header'
+import MethodologySection from '#/components/MethodologySection'
 import SolutionsSection from '#/components/SolutionsSection'
 import TestimonialSection from '#/components/TestimonialSection'
 import { Button } from '#/components/ui/button'
@@ -104,6 +105,7 @@ function App() {
             <AboutSection id="about" />
           </div>
 
+          <MethodologySection />
           <SolutionsSection id="solucoes" />
           <TestimonialSection />
           <DifferentialsSection id="diferenciais" />
