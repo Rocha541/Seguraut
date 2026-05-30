@@ -27,6 +27,12 @@ export default function Header() {
               Soluções
             </a>
             <a
+              href="/#faq"
+              className="rounded-2xl px-4 py-1.5 transition-colors duration-200 hover:bg-[#102719] hover:text-background "
+            >
+              FAQ
+            </a>
+            <a
               href="/#contato"
               className="rounded-2xl px-4 py-1.5 transition-colors duration-200 hover:bg-[#102719] hover:text-background "
             >
@@ -35,15 +41,14 @@ export default function Header() {
           </div>
 
           <div className="order-2 sm:order-3">
-            <a href="/#contato">
-              <Button
-                className="border border-[#d3fad2]  text-[#ffffff] transition-all hover:bg-[#edf8e9] hover:text-[#071402] "
-                variant="outline"
-                size="lg"
-              >
-                Falar com a Seguraut
-              </Button>
-            </a>
+            <Button
+              asChild
+              className="border border-[#d3fad2] text-[#ffffff] transition-all hover:bg-[#edf8e9] hover:text-[#071402]"
+              variant="outline"
+              size="lg"
+            >
+              <a href="/#contato">Falar com a Seguraut</a>
+            </Button>
           </div>
         </nav>
       </div>

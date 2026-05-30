@@ -4,9 +4,9 @@ import {
   Rocket,
   SearchCheck,
 } from 'lucide-react'
-import type { ReactNode } from 'react'
-import { useEffect, useRef, useState } from 'react'
 import type { LucideIcon } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 type MethodologySectionProps = {
   id?: string
@@ -16,12 +16,6 @@ type MethodologyStep = {
   title: string
   description: string
   icon: LucideIcon
-}
-
-type RevealOnViewProps = {
-  children: ReactNode
-  className?: string
-  delay?: number
 }
 
 const steps: MethodologyStep[] = [
@@ -51,88 +45,131 @@ const steps: MethodologyStep[] = [
   },
 ]
 
-function RevealOnView({
-  children,
-  className = '',
-  delay = 0,
-}: RevealOnViewProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+const revealVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    filter: 'blur(8px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.76,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
 
-  useEffect(() => {
-    const element = ref.current
+const timelineVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 0.85,
+      staggerChildren: 0.24,
+    },
+  },
+}
 
-    if (!element) {
-      return
-    }
+const lineVariants = {
+  hidden: {
+    scaleY: 0,
+  },
+  visible: {
+    scaleY: 1,
+    transition: {
+      delay: 0.62,
+      duration: 1.35,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
 
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
+const stepVariants = {
+  hidden: {
+    opacity: 0,
+    y: 34,
+    filter: 'blur(8px)',
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.78,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
 
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
-      setIsVisible(true)
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.24, rootMargin: '0px 0px -10% 0px' },
-    )
-
-    observer.observe(element)
-
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <div
-      ref={ref}
-      className={`${className} transition-all duration-700 ease-out ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-      }`}
-      style={{ transitionDelay: isVisible ? `${delay}ms` : '0ms' }}
-    >
-      {children}
-    </div>
-  )
+const iconVariants = {
+  hidden: {
+    opacity: 0.6,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.58,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 }
 
 export default function MethodologySection({
   id = 'metodologia',
 }: MethodologySectionProps) {
+  const [isMounted, setIsMounted] = useState(false)
+  const timelineRef = useRef<HTMLDivElement>(null)
+  const prefersReducedMotion = useReducedMotion()
+  const shouldReduceMotion = isMounted && Boolean(prefersReducedMotion)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   return (
     <section
       id={id}
-      className="relative isolate scroll-mt-28 overflow-hidden border-b border-[var(--line)] bg-background py-16 text-foreground md:py-24"
+      className="relative isolate scroll-mt-28 overflow-hidden border-b border-[var(--line)] bg-[#f8faf7] py-16 text-foreground md:py-24"
     >
       <div className="page-wrap">
-        <RevealOnView>
-          <header className="mx-auto max-w-5xl text-center">
-            
-            <h2 className="mt-4 text-balance text-4xl leading-tight font-bold text-foreground md:text-6xl">
-              Metodologia & Entregáveis
-            </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              Um processo claro para entender o contexto, definir prioridades,
-              implantar melhorias e acompanhar a segurança do condomínio.
-            </p>
-          </header>
-        </RevealOnView>
+        <motion.header
+          className="mx-auto max-w-5xl text-center"
+          initial="hidden"
+          animate={shouldReduceMotion ? 'visible' : undefined}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.42, margin: '0px 0px -12% 0px' }}
+          variants={revealVariants}
+        >
+          <h2 className="mt-4 text-balance text-4xl leading-tight font-bold text-foreground md:text-6xl">
+            Metodologia & Entregáveis
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            Um processo claro para entender o contexto, definir prioridades,
+            implantar melhorias e acompanhar a segurança do condomínio.
+          </p>
+        </motion.header>
 
-        <div className="relative mx-auto mt-14 max-w-[960px] md:mt-20">
+        <motion.div
+          ref={timelineRef}
+          className="relative mx-auto mt-14 max-w-[960px] md:mt-20"
+          initial={shouldReduceMotion ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.08, margin: '0px 0px -12% 0px' }}
+          variants={timelineVariants}
+        >
           <div
             aria-hidden="true"
             className="absolute top-0 bottom-0 left-6 w-px bg-[repeating-linear-gradient(180deg,var(--line)_0_2px,transparent_2px_9px)] md:left-1/2 md:-translate-x-1/2"
           />
-          <div
+          <motion.div
             aria-hidden="true"
             className="absolute top-5 bottom-5 left-6 w-[7px] rounded-full bg-[linear-gradient(180deg,rgba(81,192,87,0.08),var(--brand-green)_24%,var(--brand-green)_76%,rgba(81,192,87,0.08))] md:left-1/2 md:-translate-x-1/2"
+            variants={lineVariants}
+            style={{ transformOrigin: 'top' }}
           />
 
           <div className="grid gap-14 md:gap-0">
@@ -141,42 +178,43 @@ export default function MethodologySection({
               const isEven = index % 2 === 0
 
               return (
-                <RevealOnView
+                <motion.article
                   key={step.title}
-                  className="relative"
-                  delay={index * 90}
+                  className="relative grid min-h-[168px] grid-cols-[3rem_minmax(0,1fr)] items-start gap-5 md:min-h-[202px] md:grid-cols-[minmax(0,1fr)_7rem_minmax(0,1fr)] md:gap-0"
+                  variants={stepVariants}
                 >
-                  <article className="relative grid min-h-[168px] grid-cols-[3rem_minmax(0,1fr)] items-start gap-5 md:min-h-[202px] md:grid-cols-[minmax(0,1fr)_7rem_minmax(0,1fr)] md:gap-0">
-                    <div
-                      className={`col-start-2 row-start-1 min-w-0 pt-0 md:pt-1 ${
-                        isEven
-                          ? 'md:col-start-1 md:pr-10 md:text-left'
-                          : 'md:col-start-3 md:pl-10 md:text-left'
-                      }`}
-                    >
-                      <div className="max-w-[390px]">
-                        <h3 className="text-3xl leading-none font-bold text-foreground md:text-[2rem]">
-                          {step.title}
-                        </h3>
-                        <p className="mt-5 text-base leading-[1.55] text-muted-foreground md:text-lg">
-                          {step.description}
-                        </p>
-                      </div>
+                  <div
+                    className={`col-start-2 row-start-1 min-w-0 pt-0 md:pt-1 ${
+                      isEven
+                        ? 'md:col-start-1 md:pr-10 md:text-left'
+                        : 'md:col-start-3 md:pl-10 md:text-left'
+                    }`}
+                  >
+                    <div className="max-w-[390px]">
+                      <h3 className="text-3xl leading-none font-bold text-foreground md:text-[2rem]">
+                        {step.title}
+                      </h3>
+                      <p className="mt-5 text-base leading-[1.55] text-muted-foreground md:text-lg">
+                        {step.description}
+                      </p>
                     </div>
+                  </div>
 
-                    <div className="absolute top-0 left-0 z-10 row-start-1 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--line)] bg-background text-[var(--brand-green)] shadow-[0_0_0_10px_var(--background),0_10px_30px_rgba(6,14,9,0.08)] transition-transform duration-500 ease-out md:static md:col-start-2 md:mx-auto md:h-12 md:w-12">
-                      <Icon
-                        aria-hidden="true"
-                        className="h-5 w-5"
-                        strokeWidth={1.8}
-                      />
-                    </div>
-                  </article>
-                </RevealOnView>
+                  <motion.div
+                    className="absolute top-0 left-0 z-10 row-start-1 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--line)] bg-background text-[var(--brand-green)] shadow-[0_0_0_10px_var(--background),0_10px_30px_rgba(6,14,9,0.08)] md:static md:col-start-2 md:mx-auto md:h-12 md:w-12"
+                    variants={iconVariants}
+                  >
+                    <Icon
+                      aria-hidden="true"
+                      className="h-5 w-5"
+                      strokeWidth={1.8}
+                    />
+                  </motion.div>
+                </motion.article>
               )
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

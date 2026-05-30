@@ -9,7 +9,61 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import appCss from '../styles.css?url'
 
+const SITE_URL = 'https://seguraut.com.br'
+const SITE_TITLE = 'Segurança para Condomínios | Portaria, CFTV e Acesso'
+const SITE_DESCRIPTION =
+  'Segurança eletrônica para condomínios com portaria remota, monitoramento 24h, CFTV, alarmes e controle de acesso planejados para reduzir riscos.'
+
 const THEME_INIT_SCRIPT = `(function(){try{var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;}catch(e){}})();`
+const STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Seguraut',
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo-seguraut.svg`,
+      email: 'contato@seguraut.com.br',
+      areaServed: 'Brasil',
+      parentOrganization: {
+        '@type': 'Organization',
+        name: 'Grupo Progresso',
+      },
+      sameAs: [],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Seguraut',
+      inLanguage: 'pt-BR',
+      publisher: {
+        '@id': `${SITE_URL}/#organization`,
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${SITE_URL}/#service`,
+      name: 'Segurança eletrônica para condomínios',
+      provider: {
+        '@id': `${SITE_URL}/#organization`,
+      },
+      serviceType: [
+        'Portaria remota',
+        'Monitoramento 24h',
+        'Controle de acesso',
+        'CFTV',
+        'Alarmes',
+      ],
+      areaServed: 'Brasil',
+      audience: {
+        '@type': 'Audience',
+        audienceType: 'Síndicos, administradoras e condomínios',
+      },
+    },
+  ],
+}
 
 export const Route = createRootRoute({
   head: () => ({
@@ -22,24 +76,81 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Seguraut | Segurança para Condomínios',
+        title: SITE_TITLE,
+      },
+      {
+        name: 'robots',
+        content: 'index, follow, max-image-preview:large',
       },
       {
         name: 'description',
-        content:
-          'Soluções de segurança para condomínios com implantação planejada, equipe técnica especializada e operação contínua.',
+        content: SITE_DESCRIPTION,
       },
       {
         property: 'og:title',
-        content: 'Seguraut | Segurança para Condomínios',
+        content: SITE_TITLE,
       },
       {
         property: 'og:description',
-        content:
-          'Conheça a Seguraut e solicite um diagnóstico para elevar a segurança do seu condomínio.',
+        content: SITE_DESCRIPTION,
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        property: 'og:url',
+        content: SITE_URL,
+      },
+      {
+        property: 'og:site_name',
+        content: 'Seguraut',
+      },
+      {
+        property: 'og:locale',
+        content: 'pt_BR',
+      },
+      {
+        property: 'og:image',
+        content: `${SITE_URL}/figma/condocamera.png`,
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        name: 'twitter:title',
+        content: SITE_TITLE,
+      },
+      {
+        name: 'twitter:description',
+        content: SITE_DESCRIPTION,
+      },
+      {
+        name: 'twitter:image',
+        content: `${SITE_URL}/figma/condocamera.png`,
       },
     ],
     links: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/figma/favicon.png',
+      },
+      {
+        rel: 'shortcut icon',
+        href: '/figma/favicon.png',
+      },
+      {
+        rel: 'canonical',
+        href: SITE_URL,
+      },
+      {
+        rel: 'preload',
+        as: 'image',
+        href: '/figma/condocamera.png',
+        fetchPriority: 'high',
+      },
       {
         rel: 'stylesheet',
         href: appCss,
@@ -53,11 +164,6 @@ export const Route = createRootRoute({
         href: 'https://fonts.gstatic.com',
         crossOrigin: 'anonymous',
       },
-      {
-        rel: 'preload',
-        href: '/image-condominio.png',
-        as: 'image',
-      },
     ],
   }),
   shellComponent: RootDocument,
@@ -69,6 +175,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+        />
         <HeadContent />
       </head>
       <body className=" " suppressHydrationWarning>

@@ -9,7 +9,7 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
   return (
     <section
       id={id}
-      className="scroll-mt-28 w-full border-y border-[#0d1a11]/14 bg-[#f3f6f2]"
+      className="scroll-mt-28 w-full border-y border-[#0d1a11]/14 bg-[#f8faf7]"
     >
       <div className="page-wrap grid min-h-screen grid-cols-1 gap-10 py-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-20">
         <div className="max-w-3xl">
@@ -38,12 +38,23 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
             </div>
           </div>
 
-          <Button
-            size="lg"
-            className="mt-8 w-full bg-[#51c057] text-[#071402] hover:bg-primary hover:text-[#dff5dc] sm:w-auto"
-          >
-            Falar com especialista
-          </Button>
+          <div className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:items-center">
+            <Button
+              asChild
+              size="lg"
+              className="w-full bg-[#51c057] text-[#071402] hover:bg-primary hover:text-[#dff5dc] sm:w-auto"
+            >
+              <a href="/#contato">Falar com especialista</a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="w-full border-[#102719]/24 bg-transparent text-[#102719] hover:bg-[#edf8e9] hover:text-[#102719] sm:w-auto"
+            >
+              <a href="/#solucoes">Ver soluções</a>
+            </Button>
+          </div>
         </div>
 
         <div className="relative min-h-[340px] overflow-hidden rounded-sm border border-[#0d1a11]/14 sm:min-h-[460px] lg:min-h-[640px] bg-[url(/figma/condominio-santapaula.png)] bg-cover" />
