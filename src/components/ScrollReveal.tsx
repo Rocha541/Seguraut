@@ -1,45 +1,56 @@
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import type { ReactNode } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type ScrollRevealProps = {
   children: ReactNode
   className?: string
+  delay?: number
+  distance?: number
+  direction?: 'up' | 'down' | 'left' | 'right'
+  amount?: number
 }
 
-export default function ScrollReveal({ children, className }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null)
+const directionOffset = {
+  up: { x: 0, y: 34 },
+  down: { x: 0, y: -34 },
+  left: { x: 34, y: 0 },
+  right: { x: -34, y: 0 },
+}
+
+export default function ScrollReveal({
+  children,
+  className,
+  delay = 0,
+  distance = 34,
+  direction = 'up',
+  amount = 0.22,
+}: ScrollRevealProps) {
   const [isMounted, setIsMounted] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
+  const offset = directionOffset[direction]
+  const x = offset.x === 0 ? 0 : Math.sign(offset.x) * distance
+  const y = offset.y === 0 ? 0 : Math.sign(offset.y) * distance
+  const visible = { opacity: 1, x: 0, y: 0 }
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    // Robust range: starts when the element enters viewport and completes while it crosses it.
-    offset: ['start end', 'end start'],
-  })
-
-  // Smooth the raw progress so reveal feels fluid and premium.
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 190,
-    damping: 90,
-    mass: 0.50,
-  })
-
-  // Increase perceived contrast earlier in the reveal.
-  const opacity = useTransform(smoothProgress, [0, 0.12, 0.4, 1], [0, 0.72, 0.94, 1])
-  const y = useTransform(smoothProgress, [0, 0.5], [250, 0])
-
-  // SSR-safe: render static content on server/first paint to avoid hydration mismatch.
-  const shouldAnimate = isMounted
-
   return (
-    <div ref={ref} className={`relative ${className ?? ''}`}>
-      <motion.div style={shouldAnimate ? { opacity, y } : undefined}>
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, x, y }}
+      animate={isMounted && prefersReducedMotion ? visible : undefined}
+      whileInView={isMounted && !prefersReducedMotion ? visible : undefined}
+      viewport={{ once: true, amount, margin: '0px 0px -12% 0px' }}
+      transition={{
+        duration: prefersReducedMotion ? 0 : 0.75,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
+      {children}
+    </motion.div>
   )
 }
