@@ -112,6 +112,7 @@ body,
 }
 
 html {
+  position: relative;
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
 }
@@ -120,19 +121,16 @@ body {
   margin: 0;
   color: var(--foreground);
   font-family: var(--font-sans);
- 
+
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
-
-
 
 code {
   font-size: 0.9em;
@@ -181,7 +179,7 @@ h6,
 
 main :is(h1, h2),
 section :is(h1, h2) {
-  letter-spacing: -0.040em !important;
+  letter-spacing: -0.04em !important;
 }
 
 p,
@@ -191,10 +189,6 @@ p,
   font-family: var(--font-subtitle);
 }
 
-
-
-
-
 .feature-card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in oklab, var(--lagoon-deep) 35%, var(--line));
@@ -203,7 +197,10 @@ p,
 button,
 .island-shell,
 a {
-  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
     transform 180ms ease;
 }
 
@@ -214,13 +211,6 @@ a {
   font-size: 0.69rem;
   color: var(--kicker);
 }
-
-
-
-
-
-
-
 
 @keyframes rise-in {
   from {
@@ -242,5 +232,19 @@ a {
   * {
     @apply border-border outline-ring/50;
   }
-  
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

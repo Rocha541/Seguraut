@@ -1,6 +1,7 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
+import { premiumEase, useShouldReduceMotion } from '#/lib/motion'
 
 type ScrollRevealProps = {
   children: ReactNode
@@ -27,7 +28,7 @@ export default function ScrollReveal({
   amount = 0.22,
 }: ScrollRevealProps) {
   const [isMounted, setIsMounted] = useState(false)
-  const prefersReducedMotion = useReducedMotion()
+  const prefersReducedMotion = useShouldReduceMotion()
   const offset = directionOffset[direction]
   const x = offset.x === 0 ? 0 : Math.sign(offset.x) * distance
   const y = offset.y === 0 ? 0 : Math.sign(offset.y) * distance
@@ -47,7 +48,7 @@ export default function ScrollReveal({
       transition={{
         duration: prefersReducedMotion ? 0 : 0.75,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: premiumEase,
       }}
     >
       {children}

@@ -6,13 +6,12 @@ import FAQSection from '#/components/FAQSection'
 import Footer from '#/components/Footer'
 import Header from '#/components/Header'
 import MethodologySection from '#/components/MethodologySection'
-import ScrollProgress from '#/components/ScrollProgress'
-import ScrollReveal from '#/components/ScrollReveal'
 import SolutionsSection from '#/components/SolutionsSection'
 import TestimonialSection from '#/components/TestimonialSection'
 import { Button } from '#/components/ui/button'
+import { premiumEase, useShouldReduceMotion } from '#/lib/motion'
 import { createFileRoute } from '@tanstack/react-router'
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 
 export const Route = createFileRoute('/')({ component: App })
@@ -39,7 +38,7 @@ const heroItemVariants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.78,
-      ease: [0.22, 1, 0.36, 1],
+      ease: premiumEase,
     },
   },
 }
@@ -54,7 +53,7 @@ const statVariants = {
     y: 0,
     transition: {
       duration: 0.58,
-      ease: [0.22, 1, 0.36, 1],
+      ease: premiumEase,
     },
   },
 }
@@ -63,7 +62,7 @@ function App() {
   const [isMounted, setIsMounted] = useState(false)
   const heroStackRef = useRef<HTMLElement>(null)
   const heroRef = useRef<HTMLElement>(null)
-  const prefersReducedMotion = useReducedMotion()
+  const prefersReducedMotion = useShouldReduceMotion()
   const { scrollYProgress: heroScrollProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start'],
@@ -77,7 +76,11 @@ function App() {
   const heroOverlayOpacity = useTransform(heroScrollProgress, [0, 1], [1, 0.78])
   const heroBlurOpacity = useTransform(heroStackProgress, [0.34, 0.58], [0, 1])
   const aboutPanelY = useTransform(heroStackProgress, [0.24, 0.58], [90, 0])
-  const aboutPanelScale = useTransform(heroStackProgress, [0.24, 0.58], [0.985, 1])
+  const aboutPanelScale = useTransform(
+    heroStackProgress,
+    [0.24, 0.58],
+    [0.985, 1],
+  )
   const shouldAnimate = isMounted && !prefersReducedMotion
 
   useEffect(() => {
@@ -86,13 +89,9 @@ function App() {
 
   return (
     <div>
-      <ScrollProgress />
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <section
-            ref={heroStackRef}
-            className="relative isolate bg-[#060e09]"
-          >
+          <section ref={heroStackRef} className="relative isolate bg-[#060e09]">
             <main
               id="home"
               ref={heroRef}
@@ -228,19 +227,13 @@ function App() {
           </section>
 
           <SolutionsSection id="solucoes" />
-          <ScrollReveal amount={0.16}>
-            <TestimonialSection />
-          </ScrollReveal>
+          <TestimonialSection />
           <MethodologySection />
           <DifferentialsSection id="diferenciais" />
 
           <BenefitsSection />
-          <ScrollReveal amount={0.08}>
-            <DiagnosticSection />
-          </ScrollReveal>
-          <ScrollReveal amount={0.08}>
-            <FAQSection />
-          </ScrollReveal>
+          <DiagnosticSection />
+          <FAQSection />
           <Footer />
         </div>
       </div>
