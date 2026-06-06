@@ -1,6 +1,14 @@
 ﻿import { Button } from '#/components/ui/button'
-import { motion, useInView, useReducedMotion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import {
+  accentLineReveal,
+  cardReveal,
+  copyStaggerContainer,
+  fadeUp,
+  iconReveal,
+  useShouldReduceMotion,
+  viewportOnce,
+} from '#/lib/motion'
+import { motion } from 'framer-motion'
 
 type DifferentialsSectionProps = {
   id?: string
@@ -335,127 +343,29 @@ const differentials: DifferentialItem[] = [
   },
 ]
 
-const cardOffsets = [
-  { x: -170, y: -110 },
-  { x: 170, y: -110 },
-  { x: -170, y: 110 },
-  { x: 170, y: 110 },
-]
-
-function getCardVariants(index: number) {
-  const offset = cardOffsets[index] ?? { x: 0, y: 26 }
-
-  return {
-    hidden: {
-      opacity: 0,
-      x: offset.x,
-      y: offset.y,
-      scale: 0.86,
-      filter: 'blur(18px)',
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      filter: 'blur(0px)',
-      transition: {
-        delay: 0.72,
-        duration: 1.18,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  }
-}
-
-const headerVariants = {
-  hidden: {
-    opacity: 0,
-    y: 34,
-    filter: 'blur(10px)',
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-}
-
-const greenBarVariants = {
-  hidden: {
-    opacity: 0,
-    scaleX: 0,
-  },
-  visible: {
-    opacity: 1,
-    scaleX: 1,
-    transition: {
-      delay: 1.35,
-      duration: 0.78,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-}
-
-const illustrationVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.82,
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.28,
-      duration: 0.95,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-}
-
 type DifferentialCardProps = {
   item: DifferentialItem
   index: number
-  isLast: boolean
-  onLastReveal: () => void
   shouldReduceMotion: boolean
 }
 
 function DifferentialCard({
   item,
   index,
-  isLast,
-  onLastReveal,
   shouldReduceMotion,
 }: DifferentialCardProps) {
-  const cardRef = useRef<HTMLElement>(null)
-  const isCardInView = useInView(cardRef, {
-    once: true,
-    amount: 0.42,
-    margin: '0px 0px -46% 0px',
-  })
-
-  useEffect(() => {
-    if (isLast && (isCardInView || shouldReduceMotion)) {
-      onLastReveal()
-    }
-  }, [isCardInView, isLast, onLastReveal, shouldReduceMotion])
-
   return (
     <motion.article
-      ref={cardRef}
       className={`relative bg-[#f3f6f2] px-6 py-8 ${
         index % 2 === 0 ? 'xl:border-r xl:border-[#0d1a11]/14' : ''
       } ${index < differentials.length - 1 ? 'border-b border-[#0d1a11]/14' : ''} ${
         index >= 2 ? 'xl:border-b-0' : ''
       }`}
+      custom={index}
       initial="hidden"
-      animate={shouldReduceMotion || isCardInView ? 'visible' : 'hidden'}
-      variants={getCardVariants(index)}
+      whileInView={shouldReduceMotion ? 'reduced' : 'visible'}
+      viewport={viewportOnce}
+      variants={cardReveal}
     >
       <div className="flex flex-col gap-6 md:grid md:grid-cols-[minmax(0,1fr)_220px] md:items-center md:gap-8">
         <div className="min-w-0 flex-1">
@@ -472,7 +382,7 @@ function DifferentialCard({
 
         <motion.div
           className="h-[180px] w-full max-w-[290px] self-center opacity-95 md:h-[210px] md:w-[250px] md:max-w-none md:justify-self-end"
-          variants={illustrationVariants}
+          variants={iconReveal}
         >
           <CardIllustration type={item.illustration} />
         </motion.div>
@@ -484,14 +394,7 @@ function DifferentialCard({
 export default function DifferentialsSection({
   id = 'diferenciais',
 }: DifferentialsSectionProps) {
-  const [isMounted, setIsMounted] = useState(false)
-  const [hasRevealedLastCard, setHasRevealedLastCard] = useState(false)
-  const prefersReducedMotion = useReducedMotion()
-  const shouldReduceMotion = isMounted && Boolean(prefersReducedMotion)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  const shouldReduceMotion = useShouldReduceMotion()
 
   return (
     <section id={id} className="scroll-mt-28 bg-[#f8faf7] py-12 md:py-16">
@@ -499,27 +402,23 @@ export default function DifferentialsSection({
         <motion.div
           className="mx-auto mb-10 max-w-5xl text-center"
           initial="hidden"
-          animate={shouldReduceMotion ? 'visible' : undefined}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.42, margin: '0px 0px -12% 0px' }}
+          whileInView={shouldReduceMotion ? 'reduced' : 'visible'}
+          viewport={viewportOnce}
+          variants={copyStaggerContainer}
         >
           <motion.div
             className="mx-auto mb-6 h-1 w-14 origin-center bg-[#51c057]"
-            initial="hidden"
-            animate={
-              shouldReduceMotion || hasRevealedLastCard ? 'visible' : 'hidden'
-            }
-            variants={greenBarVariants}
+            variants={accentLineReveal}
           />
           <motion.h2
             className="mx-auto max-w-5xl text-4xl leading-tight font-bold text-[#060e09] md:text-5xl"
-            variants={headerVariants}
+            variants={fadeUp}
           >
             Segurança eletrônica com operação simples e controle real
           </motion.h2>
           <motion.p
             className="mx-auto mt-6 max-w-4xl text-base leading-relaxed text-[#243a2d]/78 md:text-lg"
-            variants={headerVariants}
+            variants={fadeUp}
           >
             Estrutura técnica, suporte e manutenção integrados em uma operação
             confiável para síndicos, moradores e administradoras.
@@ -529,10 +428,9 @@ export default function DifferentialsSection({
         <motion.div
           className="mb-8 flex justify-center"
           initial="hidden"
-          animate={shouldReduceMotion ? 'visible' : undefined}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.6, margin: '0px 0px -12% 0px' }}
-          variants={headerVariants}
+          whileInView={shouldReduceMotion ? 'reduced' : 'visible'}
+          viewport={viewportOnce}
+          variants={fadeUp}
         >
           <Button
             asChild
@@ -549,8 +447,6 @@ export default function DifferentialsSection({
               key={item.title}
               item={item}
               index={index}
-              isLast={index === differentials.length - 1}
-              onLastReveal={() => setHasRevealedLastCard(true)}
               shouldReduceMotion={shouldReduceMotion}
             />
           ))}

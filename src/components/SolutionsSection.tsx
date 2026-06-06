@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { BellRing, Camera, DoorOpen, Headphones, ScanFace } from 'lucide-react'
 import { Button } from '#/components/ui/button'
+import { premiumEase } from '#/lib/motion'
 import { motion } from 'framer-motion'
 
 type SolutionsSectionProps = {
@@ -52,7 +53,7 @@ function RevealItem({
       transition={{
         duration: 0.82,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: premiumEase,
       }}
     >
       {children}
@@ -85,7 +86,7 @@ function CardRevealItem({
       transition={{
         duration: 0.76,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: premiumEase,
       }}
     >
       {children}

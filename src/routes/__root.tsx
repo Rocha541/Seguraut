@@ -6,6 +6,7 @@
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { MotionConfig } from 'framer-motion'
 
 import appCss from '../styles.css?url'
 
@@ -182,7 +183,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className=" " suppressHydrationWarning>
-        {children}
+        <MotionConfig reducedMotion={import.meta.env.DEV ? 'never' : 'user'}>
+          {children}
+        </MotionConfig>
 
         {import.meta.env.DEV ? (
           <TanStackDevtools

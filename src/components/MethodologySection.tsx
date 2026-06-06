@@ -5,8 +5,9 @@ import {
   SearchCheck,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import { premiumEase, useShouldReduceMotion } from '#/lib/motion'
 
 type MethodologySectionProps = {
   id?: string
@@ -57,7 +58,7 @@ const revealVariants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.76,
-      ease: [0.22, 1, 0.36, 1],
+      ease: premiumEase,
     },
   },
 }
@@ -81,7 +82,7 @@ const lineVariants = {
     transition: {
       delay: 0.62,
       duration: 1.35,
-      ease: [0.22, 1, 0.36, 1],
+      ease: premiumEase,
     },
   },
 }
@@ -98,7 +99,7 @@ const stepVariants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.78,
-      ease: [0.22, 1, 0.36, 1],
+      ease: premiumEase,
     },
   },
 }
@@ -113,7 +114,7 @@ const iconVariants = {
     scale: 1,
     transition: {
       duration: 0.58,
-      ease: [0.22, 1, 0.36, 1],
+      ease: premiumEase,
     },
   },
 }
@@ -123,8 +124,8 @@ export default function MethodologySection({
 }: MethodologySectionProps) {
   const [isMounted, setIsMounted] = useState(false)
   const timelineRef = useRef<HTMLDivElement>(null)
-  const prefersReducedMotion = useReducedMotion()
-  const shouldReduceMotion = isMounted && Boolean(prefersReducedMotion)
+  const prefersReducedMotion = useShouldReduceMotion()
+  const shouldReduceMotion = isMounted && prefersReducedMotion
 
   useEffect(() => {
     setIsMounted(true)
