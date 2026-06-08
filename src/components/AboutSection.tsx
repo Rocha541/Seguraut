@@ -57,7 +57,7 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
           </div>
         </div>
 
-        <div className="relative min-h-[340px] overflow-hidden rounded-sm border border-[#0d1a11]/14 sm:min-h-[460px] lg:min-h-[640px] bg-[url(/figma/condominio-santapaula.png)] bg-cover" />
+        <div className="relative min-h-[340px] overflow-hidden rounded-sm border border-[#0d1a11]/14 bg-[url(/figma/condominio-santapaula-lcp.jpg)] bg-cover sm:min-h-[460px] lg:min-h-[640px]" />
       </div>
     </section>
   )

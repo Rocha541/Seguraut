@@ -119,6 +119,7 @@ html {
 
 body {
   margin: 0;
+  background: #071402;
   color: var(--foreground);
   font-family: var(--font-sans);
 

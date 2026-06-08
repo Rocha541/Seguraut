@@ -99,11 +99,15 @@ function App() {
             >
               <motion.img
                 aria-hidden="true"
-                src="/figma/condocamera.png"
+                src="/figma/condocamera-1672.jpg"
+                srcSet="/figma/condocamera-960.jpg 960w, /figma/condocamera-1280.jpg 1280w, /figma/condocamera-1672.jpg 1672w"
+                sizes="100vw"
                 alt=""
+                width="1672"
+                height="941"
                 fetchPriority="high"
                 loading="eager"
-                decoding="sync"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover object-center"
                 style={{
                   y: shouldAnimate ? heroImageY : 0,

@@ -149,6 +149,8 @@ function BenefitsSection({ benefits = defaultBenefits }: BenefitsSectionProps) {
             <img
               src="/figma/image 41.webp"
               alt="Ilustração dos benefícios da segurança eletrônica"
+              loading="lazy"
+              decoding="async"
               className="mx-auto w-full max-w-[700px] object-contain object-center drop-shadow-[0_28px_34px_rgba(6,14,9,0.18)]"
             />
           </motion.div>

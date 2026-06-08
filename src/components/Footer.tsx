@@ -1,4 +1,4 @@
-import { Mail, MapPin } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 function WhatsAppIcon({ className = '' }: { className?: string }) {
   return (
@@ -17,7 +17,7 @@ function WhatsAppIcon({ className = '' }: { className?: string }) {
 export default function Footer() {
   const year = new Date().getFullYear()
   const navLinks = [
-    { label: 'A Seguraut', href: '/#about' },
+    { label: 'Sobre', href: '/#about' },
     { label: 'Soluções', href: '/#solucoes' },
     { label: 'Diferenciais', href: '/#diferenciais' },
     { label: 'FAQ', href: '/#faq' },
@@ -39,43 +39,21 @@ export default function Footer() {
       />
 
       <div className="page-wrap relative z-10 py-10 sm:py-12 lg:py-14">
-        <div className="grid gap-8 border-b border-[#edf8e9]/16 pb-9 lg:grid-cols-[1.05fr_1.35fr] lg:items-end">
+        <div className="pb-9">
           <div>
             <a href="/#home" className="inline-flex items-center gap-3">
               <img
-                className="h-12 w-12"
+                className="h-16 w-16"
                 src="/figma/logo-branca.svg"
-                alt="Logo Seguraut"
+                alt="Logo"
               />
-              <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#51c057]">
-                Seguraut
-              </span>
             </a>
-            <p className="mt-6 max-w-xl text-2xl leading-tight font-semibold text-[#edf8e9] sm:text-3xl lg:text-4xl">
-              Segurança eletrônica para condomínios com operação simples e
-              controle real.
-            </p>
-          </div>
-
-          <div className="grid gap-3 text-sm text-[#d3fad2]/82 sm:grid-cols-3">
-            <div className="border-l border-[#51c057]/40 pl-4">
-              <strong className="block text-lg text-[#edf8e9]">24h</strong>
-              <span>Monitoramento contínuo</span>
-            </div>
-            <div className="border-l border-[#51c057]/40 pl-4">
-              <strong className="block text-lg text-[#edf8e9]">+10</strong>
-              <span>Condomínios atendidos</span>
-            </div>
-            <div className="border-l border-[#51c057]/40 pl-4">
-              <strong className="block text-lg text-[#edf8e9]">+500</strong>
-              <span>Moradores protegidos</span>
-            </div>
           </div>
         </div>
 
         <div className="grid gap-8 py-9 md:grid-cols-2 lg:grid-cols-[0.85fr_0.85fr_1.3fr] lg:gap-12">
           <nav aria-label="Links do rodapé">
-            <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[#edf8e9]">
+            <h2 className="text-base font-bold uppercase tracking-[0.15em] text-[#edf8e9]">
               Navegação
             </h2>
             <div className="mt-5 grid gap-3">
@@ -83,7 +61,7 @@ export default function Footer() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-[#edf8e9]/74 transition-colors hover:text-[#51c057]"
+                  className="text-base text-[#edf8e9]/74 transition-colors hover:text-[#51c057]"
                 >
                   {link.label}
                 </a>
@@ -92,14 +70,14 @@ export default function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[#edf8e9]">
+            <h2 className="text-base font-bold uppercase tracking-[0.15em] text-[#edf8e9]">
               Soluções
             </h2>
             <ul className="mt-5 grid list-none gap-3 p-0">
               {services.map((service) => (
                 <li
                   key={service}
-                  className="flex items-center gap-3 text-sm text-[#edf8e9]/74"
+                  className="flex items-center gap-3 text-base text-[#edf8e9]/74"
                 >
                   <span
                     aria-hidden="true"
@@ -112,10 +90,10 @@ export default function Footer() {
           </div>
 
           <address className="not-italic">
-            <h2 className="text-sm font-bold uppercase tracking-[0.15em] text-[#edf8e9]">
+            <h2 className="text-base font-bold uppercase tracking-[0.15em] text-[#edf8e9]">
               Contato
             </h2>
-            <div className="mt-5 grid gap-3 text-sm text-[#edf8e9]/76">
+            <div className="mt-5 grid gap-3 text-base text-[#edf8e9]/76">
               <a
                 href="mailto:contato@seguraut.com.br"
                 className="group flex items-center gap-3 transition-colors hover:text-[#51c057]"
@@ -132,20 +110,14 @@ export default function Footer() {
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border border-[#51c057]/35 bg-[#edf8e9] text-[#102719] transition-colors group-hover:border-[#51c057]/70">
                   <WhatsAppIcon className="h-5 w-5" />
                 </span>
-                Falar com a Seguraut
+                Falar pelo WhatsApp
               </a>
-              <p className="m-0 flex items-center gap-3">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border border-[#51c057]/35 bg-[#edf8e9] text-[#102719]">
-                  <MapPin aria-hidden="true" className="h-4 w-4" />
-                </span>
-                Atendimento para condomínios
-              </p>
             </div>
           </address>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-[#edf8e9]/16 pt-6 text-sm text-[#edf8e9]/76 sm:flex-row sm:items-center sm:justify-between">
-          <p className="m-0">&copy; {year} Seguraut</p>
+        <div className="flex flex-col gap-3 border-t border-[#edf8e9]/16 pt-6 text-base text-[#edf8e9]/76 sm:flex-row sm:items-center sm:justify-between">
+          <p className="m-0">&copy; {year}</p>
           <p className="m-0">Desenvolvido pela Studio Syntra</p>
           <p className="m-0">Todos os direitos reservados</p>
         </div>

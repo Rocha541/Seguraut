@@ -159,6 +159,8 @@ function SolutionCard({
             src={illustrationSrc}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
             className={`pointer-events-none absolute inset-y-0 -right-10 z-0 hidden h-full w-[48%] object-cover object-left lg:block ${
               softIllustrationGradient
                 ? '[mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.18)_8%,rgba(0,0,0,0.55)_20%,#000_42%)]'

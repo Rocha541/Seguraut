@@ -4,8 +4,6 @@
   Scripts,
   createRootRoute,
 } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
 import { MotionConfig } from 'framer-motion'
 
 import appCss from '../styles.css?url'
@@ -149,7 +147,11 @@ export const Route = createRootRoute({
       {
         rel: 'preload',
         as: 'image',
-        href: '/figma/condocamera.png',
+        href: '/figma/condocamera-1672.jpg',
+        type: 'image/jpeg',
+        imageSrcSet:
+          '/figma/condocamera-960.jpg 960w, /figma/condocamera-1280.jpg 1280w, /figma/condocamera-1672.jpg 1672w',
+        imageSizes: '100vw',
         fetchPriority: 'high',
       },
       {
@@ -187,19 +189,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           {children}
         </MotionConfig>
 
-        {import.meta.env.DEV ? (
-          <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-            ]}
-          />
-        ) : null}
         <Scripts />
       </body>
     </html>
