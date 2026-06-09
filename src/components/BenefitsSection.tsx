@@ -83,8 +83,11 @@ function BenefitsSection({ benefits = defaultBenefits }: BenefitsSectionProps) {
                 className="mt-5 max-w-3xl text-base leading-relaxed text-[#243a2d]/78 md:text-lg"
                 variants={fadeUp}
               >
-                Benefícios práticos para reduzir risco, melhorar rastreabilidade
-                e dar mais previsibilidade para síndicos e administradoras.
+                Benefícios práticos para reduzir risco,{' '}
+                <span className="font-semibold text-[#060e09]">
+                  melhorar rastreabilidade e dar mais previsibilidade para
+                  síndicos e administradoras.
+                </span>
               </motion.p>
               <motion.div variants={fadeUp}>
                 <Button
