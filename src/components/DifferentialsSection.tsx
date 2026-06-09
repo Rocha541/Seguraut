@@ -414,7 +414,7 @@ export default function DifferentialsSection({
             className="mx-auto max-w-5xl text-4xl leading-tight font-bold text-[#060e09] md:text-5xl"
             variants={fadeUp}
           >
-            Segurança eletrônica com operação simples e controle real
+            Operação assistida para manter a segurança simples no dia a dia
           </motion.h2>
           <motion.p
             className="mx-auto mt-6 max-w-4xl text-base leading-relaxed text-[#243a2d]/78 md:text-lg"

@@ -259,13 +259,16 @@ export default function SolutionsSection({
           <div className="flex w-full flex-col gap-7">
             <RevealItem distance={16}>
               <h2 className="mt-5 max-w-3xl text-4xl leading-tight font-bold text-primary md:text-5xl">
-                Segurança eletrônica com operação simples e controle real
+                Soluções integradas para acesso, imagem e resposta
               </h2>
             </RevealItem>
             <RevealItem delay={0.22} distance={16}>
               <p className="max-w-4xl text-base leading-relaxed text-[#243a2d]/78 md:justify-self-start md:text-lg">
-                Portaria, acesso, CFTV, alarmes e comunicação integrados em uma
-                estrutura confiável para síndicos, moradores e administradoras.
+                Portaria, acesso, CFTV, alarmes e{' '}
+                <span className="font-semibold text-primary">
+                  comunicação integrados em uma estrutura confiável para
+                  síndicos, moradores e administradoras.
+                </span>
               </p>
             </RevealItem>
           </div>

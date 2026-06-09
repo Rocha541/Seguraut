@@ -62,9 +62,11 @@ export default function DiagnosticSection() {
             className="mt-5 max-w-xl text-base leading-relaxed text-[#243a2d]/78 md:text-lg"
             variants={fadeUp}
           >
-            A Seguraut avalia a rotina do condomínio, identifica riscos e
-            apresenta um plano de ação para portaria, acesso, CFTV, alarmes e
-            manutenção.
+            A Seguraut avalia a rotina do condomínio,{' '}
+            <span className="font-semibold text-[#060e09]">
+              identifica riscos e apresenta um plano de ação
+            </span>{' '}
+            para portaria, acesso, CFTV, alarmes e manutenção.
           </motion.p>
           <motion.div
             className="mt-8 flex w-full flex-col gap-3 sm:flex-row sm:items-center"

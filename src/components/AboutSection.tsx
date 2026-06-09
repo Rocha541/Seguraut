@@ -18,9 +18,15 @@ export default function AboutSection({ id = 'about' }: AboutSectionProps) {
             Soluções inteligentes para condomínios mais protegidos
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-primary/78 sm:text-lg">
-            A Seguraut faz parte do Grupo Progresso, referência em soluções para
-            condomínios. Somos especialistas em segurança eletrônica para
-            portarias, controle de acesso e áreas comuns.
+            A Seguraut faz parte do{' '}
+            <span className="font-semibold text-primary">
+              Grupo Progresso, referência em soluções para condomínios.
+            </span>{' '}
+            Somos especialistas em{' '}
+            <span className="font-semibold text-primary">
+              segurança eletrônica para portarias, controle de acesso e áreas
+              comuns.
+            </span>
           </p>
 
           <div className="mt-5 space-y-3 text-sm text-primary/85 sm:text-base">
